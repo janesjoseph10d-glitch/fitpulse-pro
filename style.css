@@ -1,0 +1,223 @@
+/* =========================
+   GLOBAL DARK THEME
+========================= */
+
+.stApp {
+    background: #000000;
+    font-family: 'Inter', sans-serif;
+    animation: fadeInApp 0.8s ease-in-out;
+}
+
+/* App Fade */
+@keyframes fadeInApp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   FLOATING GRID BACKGROUND
+========================= */
+
+.stApp::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: moveGrid 30s linear infinite;
+    z-index: -2;
+}
+
+@keyframes moveGrid {
+    from { background-position: 0 0; }
+    to { background-position: 400px 400px; }
+}
+
+/* =========================
+   FLOATING PARTICLES
+========================= */
+
+.stApp::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.05), transparent 40%);
+    animation: floatParticles 12s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+@keyframes floatParticles {
+    from { transform: translateY(-20px) scale(1); }
+    to { transform: translateY(20px) scale(1.05); }
+}
+
+/* =========================
+   TEXT
+========================= */
+
+h1, h2, h3, h4, p, label {
+    color: #ffffff !important;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+section[data-testid="stSidebar"] {
+    background: #0a0a0a !important;
+}
+section[data-testid="stSidebar"] * {
+    color: #ffffff !important;
+}
+
+/* =========================
+   INPUT CARDS
+========================= */
+
+div[data-testid="stNumberInput"],
+div[data-testid="stSlider"] {
+    background: #111111;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #1a1a1a;
+    transition: all 0.4s ease;
+}
+
+div[data-testid="stNumberInput"]:hover,
+div[data-testid="stSlider"]:hover {
+    transform: translateY(-6px);
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 15px 40px rgba(255,255,255,0.15);
+}
+
+/* =========================
+   BUTTON — FINAL FIXED VERSION
+========================= */
+
+div.stButton > button:first-child {
+    width: 100%;
+    height: 4em;
+    border-radius: 14px;
+    border: 1px solid #ffffff;
+    background: #000000;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important; /* Chrome/Electron fix */
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+    animation: buttonPulse 3s infinite;
+}
+
+/* Clean glow animation */
+@keyframes buttonPulse {
+    0%   { box-shadow: 0 0 0 rgba(255,255,255,0.1); }
+    50%  { box-shadow: 0 0 35px rgba(255,255,255,0.5); }
+    100% { box-shadow: 0 0 0 rgba(255,255,255,0.1); }
+}
+
+/* Hover */
+div.stButton > button:first-child:hover {
+    background: #ffffff;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    animation: none;
+}
+
+/* Active (CLICK STATE) */
+div.stButton > button:first-child:active {
+    background: #ffffff !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    transform: scale(0.97);
+    animation: none;
+}
+
+/* Focus */
+div.stButton > button:first-child:focus,
+div.stButton > button:first-child:focus-visible {
+    background: #ffffff !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    outline: none !important;
+}
+/* =========================
+   METRIC GLOW
+========================= */
+
+div[data-testid="stMetricValue"] {
+    color: #ffffff !important;
+    font-weight: 900;
+    font-size: 30px;
+    animation: metricGlow 2s infinite alternate;
+}
+
+@keyframes metricGlow {
+    from { text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+    to { text-shadow: 0 0 25px rgba(255,255,255,0.9); }
+}
+
+/* =========================
+   RESULT CARD — ANIMATED BORDER
+========================= */
+
+.result-card {
+    position: relative;
+    padding: 30px;
+    border-radius: 18px;
+    background: #0f0f0f;
+    margin-top: 20px;
+    overflow: hidden;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ffffff, #888888, #ffffff);
+    background-size: 300% 300%;
+    animation: borderFlow 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes borderFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+.hero-wrapper {
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.hero-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 25px;
+}
+
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+@media (max-width: 768px) {
+    .hero-wrapper img {
+        border-radius: 18px;
+    }
+}
